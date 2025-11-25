@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy 19th Birthday Samriddhi 🎉</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+      overflow-x: hidden;
+      color: #333;
+    }
+
+    header {
+      text-align: center;
+      padding: 60px 20px;
+      color: #fff;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity:1; transform: translateY(0); }
+    }
+
+    .video-section {
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .video-section video {
+      width: 80%;
+      max-width: 700px;
+      border-radius: 20px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+    }
+
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 20px;
+      gap: 20px;
+    }
+
+    .gallery img {
+      width: 270px;
+      height: 330px;
+      object-fit: cover;
+      border-radius: 18px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.07);
+    }
+
+    .message-section {
+      text-align: center;
+      padding: 40px 20px;
+      background: #ffffffaa;
+      margin: 20px;
+      border-radius: 20px;
+      backdrop-filter: blur(8px);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #fff;
+    }
+
+    /* Confetti */
+    .confetti {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 999;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Background Music (autoplay muted, unmute on click) -->
+  <audio id="bgmusic" autoplay muted loop>
+    <source src="hapy.mp3" type="audio/mp3">
+  </audio>
+
+  <!-- CONFETTI CANVAS -->
+  <canvas class="confetti" id="confetti"></canvas>
+
+  <header>
+    <h1>🎉 Happy 19th Birthday bot er masi ! 🎂</h1>
+    <p>You make the world brighter just by being in it 💖</p>
+  </header>
+
+  <section class="video-section">
+    <h2>hahahahah lol</h2>
+    <video autoplay muted loop playsinline>
+      <source src="pagl.mp4" type="video/mp4">
+    </video>
+  </section>
+
+  <section class="gallery">
+    <img src="gelon.jpeg" />
+    <img src="lesgo.jpeg" />
+    <img src="sleepy.jpeg" />
+    <img src="sohappy.jpeg" />
+  </section>
+
+  <section class="message-section">
+    <h2>🌸 A Special Message 🌸</h2>
+    <p>
+      Dear Samriddhi,<br><br>
+      bhalo thako susto thako.. paglamo komao… software update v19.0 released today 🤖💗<br>
+      ami sokal 5 tay uthe eta banacchi… aj exam e fail korbo 😌💀
+    </p>
+  </section>
+
+  <footer>
+    Samriddhi — keep glowing, keep growing 💛✨
+  </footer>
+
+  <script>
+    /* ----------- Confetti Animation ----------- */
+    const canvas = document.getElementById('confetti');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const confettiPieces = [];
+    const colors = ['#ff6b6b', '#feca57', '#48dbfb', '#1dd1a1', '#f368e0'];
+
+    for (let i = 0; i < 150; i++) {
+      confettiPieces.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height - canvas.height,
+        size: Math.random() * 8 + 4,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        speed: Math.random() * 3 + 2
+      });
+    }
+
+    function drawConfetti() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      confettiPieces.forEach(p => {
+        ctx.fillStyle = p.color;
+        ctx.fillRect(p.x, p.y, p.size, p.size);
+        p.y += p.speed;
+        if (p.y > canvas.height) p.y = -10;
+      });
+      requestAnimationFrame(drawConfetti);
+    }
+    drawConfetti();
+
+    /* ----------- Enable audio after interaction ----------- */
+    const music = document.getElementById('bgmusic');
+
+    function enableSound() {
+      music.muted = false;
+      music.play();
+      document.removeEventListener("click", enableSound);
+      document.removeEventListener("touchstart", enableSound);
+    }
+
+    document.addEventListener("click", enableSound);
+    document.addEventListener("touchstart", enableSound);
+  </script>
+
+</body>
+</html>
